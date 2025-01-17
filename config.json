@@ -35,27 +35,27 @@
     "ignoreCommand": []
   },
   "adminBot": [
-    "100093774930731"
+    "100048281103451"
   ],
   "whiteListMode": {
     "enable": false,
     "whiteListIds": [
-      "61566369721724"
+      "100048281103451"
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
   },
-  "nickNameBot": "Robiul࿐ツ",
-  "prefix": "/",
-  "ArYanapi": "https://aryan-rest-api.onrender.com",
+  "nickNameBot": "Տ1ᏀᏦ2",
+  "prefix": ".",
+  "sagorapi": "https://sagor-rest-api.onrender.com",
   "api": "",
   "api2": "",
   "api3": "",
-  "authorName": "ArYan 🤡",
-  "facebook2": "https://www.facebook.com/raj.vai.404",
-  "facebook": "https://www.facebook.com/ArYan.com.404",
-  "email": "adriyanaryan@yahoo.com",
-  "replit": "https://replit.com/@ARYAN-BOT",
-  "github": "https://github.com/ARYAN-BOT-404",
+  "authorName": "SaGor 🤡",
+  "facebook2": "https://www.facebook.com/XsagorXnxx",
+  "facebook": "https://www.facebook.com/XsagorXnxx",
+  "email": "babygithub@gmail.com",
+  "replit": "https://replit.com/@SAGOR-BOT",
+  "github": "https://github.com/sagorislam00",
   "insta": "no",
   "age": "18+",
   "TG": "",
