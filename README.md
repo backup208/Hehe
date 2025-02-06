@@ -14,7 +14,7 @@
 
 
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=3000&pause=600&color=E1F75F&width=435&lines=WELCOME+MY+PROGRAM+;I'M+SAGOR+;VIEW+TO+MY+PROJECT+;TNX+YOU+VISIT+MY+PROGRAM+" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=3000&pause=600&color=F70000&width=435&lines=WELCOME+MY+PROGRAM+;I'M+SAGOR+;VIEW+TO+MY+PROJECT+;TNX+YOU+VISIT+MY+PROGRAM+" alt="Typing SVG" /></a>
 
 
 <h3><b><i>🏆 Github Statistics :</i></b></h3>
