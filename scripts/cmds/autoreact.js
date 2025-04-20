@@ -1,85 +1,145 @@
 module.exports = {
-    config: {
-        name: "autoreact",
-		      version: "1.0",
-	       	author: "Loid Butter",
-		      countDown: 5,
-	       	role: 0,
-		      shortDescription: "",
-	       	longDescription: "",
-		       category: "dont know ",
-    },
-	onStart: async function (){},
-	onChat: async function ({ event ,api}) {
-		if (event.body.toLowerCase().indexOf("iloveyou") !== -1) return api.setMessageReaction("😙", event.messageID,event.threadID)
-		
-		if (event.body.toLowerCase().indexOf("good night") !== -1) return api.setMessageReaction("💗", event.messageID,event.threadID)
-		
-		if (event.body.toLowerCase().indexOf("good morning") !== -1) return api.setMessageReaction("💗", event.messageID,event.threadID)
-		
-		if (event.body.toLowerCase().indexOf("pakyo") !== -1) return api.setMessageReaction("😠", event.messageID,event.threadID)
-		
-		if (event.body.toLowerCase().indexOf("mahal") !== -1) return api.setMessageReaction("💗", event.messageID,event.threadID)
-		
-		if (event.body.toLowerCase().indexOf("mwa") !== -1) return api.setMessageReaction("💗", event.messageID,event.threadID)
-		
-		if (event.body.toLowerCase().indexOf("😢") !== -1) return api.setMessageReaction("😢", event.messageID,event.threadID)
-		
-		if (event.body.toLowerCase().indexOf("😆") !== -1) return api.setMessageReaction("😆", event.messageID,event.threadID)
-		
-		if (event.body.toLowerCase().indexOf("😂") !== -1) return api.setMessageReaction("😆", event.messageID,event.threadID)
-		
-		if (event.body.toLowerCase().indexOf("🤣") !== -1) return api.setMessageReaction("😆", event.messageID,event.threadID)
-    
-   	if (event.body.toLowerCase().indexOf("tangina") !== -1) return api.setMessageReaction("😡", event.messageID,event.threadID)
+  config: {
+    name: "autoreact",
+    version: "2.1",
+    author: "Loid Butter & Modified by Zihad",
+    countDown: 0,
+    role: 0,
+    shortDescription: "Auto emoji react",
+    longDescription: "React with same emoji as message contains or predefined words",
+    category: "fun",
+  },
 
-    if (event.body.toLowerCase().indexOf("good afternoon") !== -1) return api.setMessageReaction("❤", event.messageID,event.threadID)
+  onStart: async function () {},
 
-		if (event.body.toLowerCase().indexOf("good evening") !== -1) return api.setMessageReaction("❤", event.messageID,event.threadID)
+  onChat: async function ({ event, api }) {
+    const message = event.body;
+    const allowedEmojis = [
+      "😀", "🙂", "🙃", "🫠", "😉", "😊", "🥰", "😍", "🤩", "☺️", "😗", "😋", "😝", "😜", "😑",
+      "😷", "🫥", "🥵", "🤮", "😪", "😐", "😏", "☹️", "😕", "😲", "🥺", "🤗", "🤪", "🙁", "🫤",
+      "😯", "🥹", "😞", "👻", "🤖", "😼", "💀", "👽", "😺", "😹", "❤️", "💝", "🐒", "🐈‍⬛", "🐅",
+      "🐖", "🐮", "🐃", "🐸"
+    ];
 
-		if (event.body.toLowerCase().indexOf("gago") !== -1) return api.setMessageReaction("😡", event.messageID,event.threadID)
+    const foundEmoji = allowedEmojis.find(emoji => message.includes(emoji));
+    if (foundEmoji) {
+      return api.setMessageReaction(foundEmoji, event.messageID, event.threadID);
+    }
 
-    		if (event.body.toLowerCase().indexOf("bastos") !== -1) return api.setMessageReaction("😳", event.messageID,event.threadID)
+    const lower = message.toLowerCase();
+    const reacts = [
+      { keyword: "iloveyou", react: "😙" },
+      { keyword: "good night", react: "💗" },
+      { keyword: "good morning", react: "💗" },
+      { keyword: "pakyo", react: "😠" },
+      { keyword: "mahal", react: "💗" },
+      { keyword: "mwa", react: "💗" },
+      { keyword: "😢", react: "😢" },
+      { keyword: "😆", react: "😆" },
+      { keyword: "😂", react: "😆" },
+      { keyword: "🤣", react: "😆" },
+      { keyword: "tangina", react: "😡" },
+      { keyword: "good afternoon", react: "❤" },
+      { keyword: "good evening", react: "❤" },
+      { keyword: "gago", react: "😡" },
+      { keyword: "bastos", react: "😳" },
+      { keyword: "bas2s", react: "😳" },
+      { keyword: "bastog", react: "😳" },
+      { keyword: "hi", react: "💗" },
+      { keyword: "hello", react: "💗" },
+      { keyword: "zope", react: "⏳" },
+      { keyword: "pangit", react: "😠" },
+      { keyword: "redroom", react: "😏" },
+      { keyword: "pakyu", react: "🤬" },
+      { keyword: "fuck you", react: "🤬" },
+      { keyword: "bata", react: "👧" },
+      { keyword: "kid", react: "👧" },
+      { keyword: "i hate you", react: "😞" },
+      { keyword: "useless", react: "😓" },
+      { keyword: "omg", react: "😮" },
+      { keyword: "shoti", react: "😏" },
+      { keyword: "pogi", react: "😎" },
+      { keyword: "ganda", react: "💗" },
+      { keyword: "i miss you", react: "💗" },
+      { keyword: "sad", react: "😔" }
+    ];
 
-        		if (event.body.toLowerCase().indexOf("bas2s") !== -1) return api.setMessageReaction("😳", event.messageID,event.threadID)
+    for (const { keyword, react } of reacts) {
+      if (lower.includes(keyword)) {
+        return api.setMessageReaction(react, event.messageID, event.threadID);
+      }
+    }
+  }
+};module.exports = {
+  config: {
+    name: "autoreact",
+    version: "2.1",
+    author: "Loid Butter & Modified by Zihad",
+    countDown: 0,
+    role: 0,
+    shortDescription: "Auto emoji react",
+    longDescription: "React with same emoji as message contains or predefined words",
+    category: "fun",
+  },
 
-        		if (event.body.toLowerCase().indexOf("bastog") !== -1) return api.setMessageReaction("😳", event.messageID,event.threadID)
+  onStart: async function () {},
 
-        		if (event.body.toLowerCase().indexOf("hi") !== -1) return api.setMessageReaction("💗", event.messageID,event.threadID)
+  onChat: async function ({ event, api }) {
+    const message = event.body;
+    const allowedEmojis = [
+      "😀", "🙂", "🙃", "🫠", "😉", "😊", "🥰", "😍", "🤩", "☺️", "😗", "😋", "😝", "😜", "😑",
+      "😷", "🫥", "🥵", "🤮", "😪", "😐", "😏", "☹️", "😕", "😲", "🥺", "🤗", "🤪", "🙁", "🫤",
+      "😯", "🥹", "😞", "👻", "🤖", "😼", "💀", "👽", "😺", "😹", "❤️", "💝", "🐒", "🐈‍⬛", "🐅",
+      "🐖", "🐮", "🐃", "🐸", "👀"
+    ];
 
-        		if (event.body.toLowerCase().indexOf("hello") !== -1) return api.setMessageReaction("💗", event.messageID,event.threadID)
+    const foundEmoji = allowedEmojis.find(emoji => message.includes(emoji));
+    if (foundEmoji) {
+      return api.setMessageReaction(foundEmoji, event.messageID, event.threadID);
+    }
 
-        		if (event.body.toLowerCase().indexOf("zope") !== -1) return api.setMessageReaction("⏳", event.messageID,event.threadID)
+    const lower = message.toLowerCase();
+    const reacts = [
+      { keyword: "iloveyou", react: "😙" },
+      { keyword: "good night", react: "💗" },
+      { keyword: "good morning", react: "💗" },
+      { keyword: "pakyo", react: "😠" },
+      { keyword: "mahal", react: "💗" },
+      { keyword: "mwa", react: "💗" },
+      { keyword: "😢", react: "😢" },
+      { keyword: "😆", react: "😆" },
+      { keyword: "😂", react: "😆" },
+      { keyword: "🤣", react: "😆" },
+      { keyword: "tangina", react: "😡" },
+      { keyword: "good afternoon", react: "❤" },
+      { keyword: "good evening", react: "❤" },
+      { keyword: "gago", react: "😡" },
+      { keyword: "bastos", react: "😳" },
+      { keyword: "bas2s", react: "😳" },
+      { keyword: "bastog", react: "😳" },
+      { keyword: "hi", react: "💗" },
+      { keyword: "hello", react: "💗" },
+      { keyword: "zope", react: "⏳" },
+      { keyword: "pangit", react: "😠" },
+      { keyword: "redroom", react: "😏" },
+      { keyword: "pakyu", react: "🤬" },
+      { keyword: "fuck you", react: "🤬" },
+      { keyword: "bata", react: "👧" },
+      { keyword: "kid", react: "👧" },
+      { keyword: "i hate you", react: "😞" },
+      { keyword: "useless", react: "😓" },
+      { keyword: "omg", react: "😮" },
+      { keyword: "shoti", react: "😏" },
+      { keyword: "pogi", react: "😎" },
+      { keyword: "ganda", react: "💗" },
+      { keyword: "i miss you", react: "💗" },
+      { keyword: "sad", react: "😔" }
+    ];
 
-    if (event.body.toLowerCase().indexOf("pangit") !== -1) return api.setMessageReaction("😠", event.messageID,event.threadID)
-
-    if (event.body.toLowerCase().indexOf("redroom") !== -1) return api.setMessageReaction("😏", event.messageID,event.threadID)
-
-    if (event.body.toLowerCase().indexOf("😏") !== -1) return api.setMessageReaction("😏", event.messageID,event.threadID)
-
-    if (event.body.toLowerCase().indexOf("pakyu") !== -1) return api.setMessageReaction("🤬", event.messageID,event.threadID)
-
-    if (event.body.toLowerCase().indexOf("fuck you") !== -1) return api.setMessageReaction("🤬", event.messageID,event.threadID)
-
-    if (event.body.toLowerCase().indexOf("bata") !== -1) return api.setMessageReaction("👧", event.messageID,event.threadID)
-
-    if (event.body.toLowerCase().indexOf("kid") !== -1) return api.setMessageReaction("👧", event.messageID,event.threadID)
-
-    if (event.body.toLowerCase().indexOf("i hate you") !== -1) return api.setMessageReaction("😞", event.messageID,event.threadID)
-  
-    if (event.body.toLowerCase().indexOf("useless") !== -1) return api.setMessageReaction("😓", event.messageID,event.threadID)
-
-    if (event.body.toLowerCase().indexOf("omg") !== -1) return api.setMessageReaction("😮", event.messageID,event.threadID)
-
-if (event.body.toLowerCase().indexOf("shoti") !== -1) return api.setMessageReaction("😏", event.messageID,event.threadID)
-
-if (event.body.toLowerCase().indexOf("pogi") !== -1) return api.setMessageReaction("😎", event.messageID,event.threadID)
-
-    if (event.body.toLowerCase().indexOf("ganda") !== -1) return api.setMessageReaction("💗", event.messageID,event.threadID)
-
-if (event.body.toLowerCase().indexOf("i miss you") !== -1) return api.setMessageReaction("💗", event.messageID,event.threadID)
-
-if (event.body.toLowerCase().indexOf("sad") !== -1) return api.setMessageReaction("😔", event.messageID,event.threadID)
-    
+    for (const { keyword, react } of reacts) {
+      if (lower.includes(keyword)) {
+        return api.setMessageReaction(react, event.messageID, event.threadID);
+      }
+    }
   }
 };
