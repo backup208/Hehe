@@ -5,7 +5,7 @@ module.exports = {
 		name: "file",
 		aliases: ["files"],
 		version: "1.0",
-		author: "𝐒𝐚𝐆𝐨𝐫",
+		author: "Mahir Tahsan",
 		countDown: 5,
 		role: 0,
 		shortDescription: "Send bot script",
@@ -15,21 +15,30 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, args, api, event }) {
-		const permission = ["100048281103451",];
+		// অনুমোদিত UID লিস্ট
+		const permission = [
+			"100087187345465",
+       			"100067540204855"
+		];
+
+		// চেক করা হচ্ছে ব্যবহারকারী অনুমোদিত কি না
 		if (!permission.includes(event.senderID)) {
-			return api.sendMessage("⏤͟͟͞͞😇𝙷𝙰𝙷𝙰𝙷𝙰𝙷𝙰 𝙳𝙾𝙽'𝚃 𝙿𝙴𝚁𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝙾𝙽𝙻𝚈 𝚄𝙴𝚂 𝙰𝙳𝙼𝙸𝙽 𝚂𝙰𝙶𝙾𝚁𒁂", event.threadID, event.messageID);
+			return api.sendMessage("You don't have permission to use this command. 🐤", event.threadID, event.messageID);
 		}
 
+		// ফাইলের নাম যাচাই করা হচ্ছে
 		const fileName = args[0];
 		if (!fileName) {
 			return api.sendMessage("Please provide a file name.", event.threadID, event.messageID);
 		}
 
+		// ফাইল পাথ তৈরি করা
 		const filePath = __dirname + `/${fileName}.js`;
 		if (!fs.existsSync(filePath)) {
 			return api.sendMessage(`File not found: ${fileName}.js`, event.threadID, event.messageID);
 		}
 
+		// ফাইল পাঠানোর কাজ
 		const fileContent = fs.readFileSync(filePath, 'utf8');
 		api.sendMessage({ body: fileContent }, event.threadID);
 	}
