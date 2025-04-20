@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/Jsjd0Y0.jpeg" alt="banner">
+<img src="" alt="banner">
 <h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> 𝗦𝗔𝗚𝗢𝗥 -𝗕𝗢𝗧 - 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐒𝐀𝐆𝐎𝐑  𝗠𝗘𝗦𝗦𝗘𝗡𝗚𝗘𝗥 𝗖𝗛𝗔𝗧 𝗕𝗢𝗧</h1>
 <!-- Github README -->
 
