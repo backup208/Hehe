@@ -1,10 +1,4 @@
 const axios = require("axios");
-const baseApiUrl = async () => {
-  const base = await axios.get(
-    `https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`,
-  );
-  return base.data.api;
-};
 
 module.exports = {
   config: {
@@ -18,15 +12,8 @@ module.exports = {
     countDown: 10,
   },
 
-  onStart: async function ({
-    event,
-    message,
-    usersData,
-    api,
-    args,
-  }) {
+  onStart: async function ({ event, message, usersData, api, args }) {
     const uid1 = event.senderID;
-
     const uid2 = Object.keys(event.mentions)[0];
     let uid;
 
@@ -42,19 +29,7 @@ module.exports = {
     }
 
     if (!uid) {
-      uid =
-        event.type === "message_reply"
-          ? event.messageReply.senderID
-          : uid2 || uid1;
-    }
-    const response = await require("axios").get(
-      `${await baseApiUrl()}/baby?list=all`
-    );
-    const dataa = response.data || { teacher: { teacherList: [] } };
-    let babyTeach = 0;
-
-    if (dataa?.teacher?.teacherList?.length) {
-      babyTeach = dataa.teacher.teacherList.find((t) => t[uid])?.[uid] || 0;
+      uid = event.type === "message_reply" ? event.messageReply.senderID : uid2 || uid1;
     }
 
     const userInfo = await api.getUserInfo(uid);
@@ -69,12 +44,14 @@ module.exports = {
         genderText = "Boy🙋🏻‍♂️";
         break;
       default:
-        genderText = "𝙶𝚊𝚢🤷🏻‍♂️";
+        genderText = "Unknown🤷🏻‍♂️";
     }
 
     const money = (await usersData.get(uid)).money;
-    const allUser = await usersData.getAll(), rank = allUser.slice().sort((a, b) => b.exp - a.exp).findIndex(user => user.userID === uid) + 1, moneyRank = allUser.slice().sort((a, b) => b.money - a.money).findIndex(user => user.userID === uid) + 1;
-
+    const allUser = await usersData.getAll();
+    const rank = allUser.slice().sort((a, b) => b.exp - a.exp).findIndex(user => user.userID === uid) + 1;
+    const moneyRank = allUser.slice().sort((a, b) => b.money - a.money).findIndex(user => user.userID === uid) + 1;
+    
     const position = userInfo[uid].type;
 
     const userInformation = `
@@ -82,8 +59,8 @@ module.exports = {
 ├‣ 𝙽𝚊𝚖𝚎: ${userInfo[uid].name}
 ├‣ 𝙶𝚎𝚗𝚍𝚎𝚛: ${genderText}
 ├‣ 𝚄𝙸𝙳: ${uid}
-├‣ 𝙲𝚕𝚊𝚜𝚜: ${position ? position?.toUpperCase() : "𝙽𝚘𝚛𝚖𝚊𝚕 𝚄𝚜𝚎𝚛🥺"}
-├‣ 𝚄𝚜𝚎𝚛𝚗𝚊𝚖𝚎: ${userInfo[uid].vanity ? userInfo[uid].vanity : "𝙽𝚘𝚗𝚎"}
+├‣ 𝙲𝚕𝚊𝚜𝚜: ${position ? position.toUpperCase() : "𝙽𝚘𝚛𝚖𝚊𝚕 𝚄𝚜𝚎𝚛 🥹"}
+├‣ 𝚄𝚜𝚎𝚛𝚗𝚊𝚖𝚎: ${userInfo[uid].vanity || "𝙽𝚘𝚗𝚎"}
 ├‣ 𝙿𝚛𝚘𝚏𝚒𝚕𝚎 𝚄𝚁𝙻: ${userInfo[uid].profileUrl}
 ├‣ 𝙱𝚒𝚛𝚝𝚑𝚍𝚊𝚢: ${userInfo[uid].isBirthday !== false ? userInfo[uid].isBirthday : "𝙿𝚛𝚒𝚟𝚊𝚝𝚎"}
 ├‣ 𝙽𝚒𝚌𝚔𝙽𝚊𝚖𝚎: ${userInfo[uid].alternateName || "𝙽𝚘𝚗𝚎"}
@@ -92,8 +69,7 @@ module.exports = {
 ╭─────[ 𝐔𝐒𝐄𝐑 𝐒𝐓𝐀𝐓𝐒 ]
 ├‣ 𝙼𝚘𝚗𝚎𝚢: $${formatMoney(money)}
 ├‣ 𝚁𝚊𝚗𝚔: #${rank}/${allUser.length}
-├‣ 𝙼𝚘𝚗𝚎𝚢 𝚁𝚊𝚗𝚔: #${moneyRank}/${allUser.length}
-╰‣ 𝙱𝚊𝚋𝚢 𝚝𝚎𝚊𝚌𝚑: ${babyTeach || 0}`;
+╰‣ 𝙼𝚘𝚗𝚎𝚢 𝚁𝚊𝚗𝚔: #${moneyRank}/${allUser.length}`;
 
     message.reply({
       body: userInformation,
