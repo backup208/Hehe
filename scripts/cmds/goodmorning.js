@@ -1,6 +1,6 @@
 module.exports = {
 	config: {
-			name: "haha",
+			name: "good morning",
 			version: "1.0",
 			author: "Jaychris Garcia",
 			countDown: 5,
@@ -15,6 +15,6 @@ onChat: async function({
 	message,
 	getLang
 }) {
-	if (event.body && event.body.toLowerCase() == "hahaha") return message.reply("sanaol happy chat mo owner ko 👇https://www.facebook.com/xxn.zihad  masaya ka lalo sa kanya HAHA");
+	if (event.body && event.body.toLowerCase() == "good morning") return message.reply("-আসসালামুয়ালাইকুম-🌺\nশুভ সকাল");
 }
 };
