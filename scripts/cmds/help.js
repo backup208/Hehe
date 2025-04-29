@@ -1,6 +1,6 @@
 module.exports = {
   config: {
-    name: "cat",
+    name: "cate",
     version: "1.0",
     author: "Zihad Edit by ChatGPT",
     countDown: 3,
