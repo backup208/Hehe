@@ -1,10 +1,10 @@
 module.exports = {
   config: {
     name: "age",
-    author: "Samir Œ",
+    author: "SAIF",
     countDown: 5,
     role: 0,
-    category: "write",
+    category: "birthday🎀",
     shortDescription: {
       en: "mention your friend and write something to post✍️",
     },
@@ -14,7 +14,7 @@ module.exports = {
     const birthday = args[0];
 
     if (!birthday) {
-      return api.sendMessage("Please provide your birthday in YYYY-MM-DD format.", event.threadID);
+      return api.sendMessage("🎂 Please provide your birthday in YYYY-MM-DD format.", event.threadID);
     }
 
     const currentDate = new Date();
@@ -26,6 +26,15 @@ module.exports = {
 
     const finalAge = isBeforeBirthday ? age - 1 : age;
 
-    api.sendMessage(`Your Age Is ${finalAge} Am I Right?`, event.threadID);
+    const message = `
+ Your Age Is ${finalAge} Am I Right? <😽
+
+📅 Birthday: ${birthDate.toDateString()}
+📅 Today: ${currentDate.toDateString()}
+
+✨ Have a wonderful day! 
+    `;
+
+    api.sendMessage(message, event.threadID);
   },
 };
