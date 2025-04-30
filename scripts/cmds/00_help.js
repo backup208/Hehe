@@ -4,13 +4,14 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ TARIF ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
- 
+const doNotDelete = "[ S A G O R ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
+
 module.exports = {
   config: {
     name: "help",
     version: "1.17",
-    author: "ArYan",
+    author: "xnxx",
+    usePrefix: false,
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -25,105 +26,98 @@ module.exports = {
     },
     priority: 1,
   },
- 
+
   onStart: async function ({ message, args, event, threadsData, role }) {
     const { threadID } = event;
     const threadData = await threadsData.get(threadID);
     const prefix = getPrefix(threadID);
- 
+
     if (args.length === 0) {
       const categories = {};
       let msg = "";
- 
+
       msg += ``; // replace with your name 
- 
+
       for (const [name, value] of commands) {
         if (value.config.role > 1 && role < value.config.role) continue;
- 
+
         const category = value.config.category || "Uncategorized";
         categories[category] = categories[category] || { commands: [] };
         categories[category].commands.push(name);
       }
- 
+
       Object.keys(categories).forEach((category) => {
         if (category !== "info") {
-          msg += `\n╭━═━┈⟬ ${category.toUpperCase()} ⟭`;
- 
- 
+          msg += `\n╭─────❃『  🍀${category.toUpperCase()} 🐐💨 』`;
+
           const names = categories[category].commands.sort();
           for (let i = 0; i < names.length; i += 3) {
-            const cmds = names.slice(i, i + 2).map((item) => `◈ ${item}`);
-            msg += `\n┣━➣${cmds.join(" ".repeat(Math.max(1, 5 - cmds.join("").length)))}`;
+            const cmds = names.slice(i, i + 2).map((item) => `${item}`);
+            msg += `\n│${cmds.join(" ".repeat(Math.max(1, 5 - cmds.join("").length)))}`;
           }
- 
-          msg += `\n╰━━━━━━═━┈┈━═━━━━━☻`;
+
+          msg += `\n╰────────────✦`;
         }
       });
- 
+
       const totalCommands = commands.size;
-      msg += `
-❏━━━━━━═━┈┈━═━━━━━❏\n TOTAL  CMDS:  [ ${totalCommands} ]\n📬 TYPE ${prefix}HELP TO SEE ALL CMDS \n`;
+      msg += `\n\n╭─────❃[✨𝙴𝙽𝙹𝙾𝚈 𝙼𝙸𝙼 𝙱𝙾𝚃✨] |[✨👑 Owner: ♡ 𝙼𝙾𝙷𝙰𝙼𝙼𝙴𝙳 𝚉𝙸𝙷𝙰𝙳 ♡✨]\n | [ 🍀𝙹𝙾𝙸𝙽 𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 𝚃𝚈𝙿𝙴: ${prefix}𝚂𝚄𝙿𝙿𝙾𝚁𝚃𝙶𝙲 ]\n | [✨𝙳𝙰𝚈𝚁𝙴𝙲𝚃 𝙶𝚁𝙾𝚄𝙿 𝙻𝙸𝙽𝙺:https://m.me/xxn.zihad/ ]\n│>𝚃𝙾𝚃𝙰𝙻 𝙲𝙼𝙳𝚂: [✨${totalCommands}✨].\n│𝚃𝚈𝙿𝙴:[ 🍀${prefix}𝙷𝙴𝙻𝙿 𝚃𝙾✨\n│✨<𝙲𝙼𝙳> 𝚃𝙾 𝙻𝙴𝙰𝚁𝙽 𝚃𝙷𝙴 𝚄𝚂𝙰𝙶𝙴.]\n╰────────────✦`;
       msg += ``;
-      msg += `\🛠️ PREFIX: ${prefix}
-👑 Owner: ♡ 𝙼𝙾𝙷𝙰𝙼𝙼𝙴𝙳 𝚉𝙸𝙷𝙰𝙳 ♡
-🎉 𝙴𝙽𝙹𝙾𝚈 𝙼𝙸𝙼 𝙱𝙾𝚃
-🔗 fb : https://m.me/xxn.zihad
-❏━━━━━━═━┈┈━═━━━━━❏`; // its not decoy so change it if you want 
- 
- 
-      await message.reply({
+      msg += `\n╭─────❃\n│ 🌟 | [✨𝙶𝙾𝙰𝚃𝙱𝙾𝚃🐐│𝙾𝚆𝙽𝙴𝚁 𝙵𝙱 𝙸𝙳:  //www.facebook.com/xxn.zihad\n╰────────────✦`;            
+        await message.reply({
         body: msg,
       });
     } else {
       const commandName = args[0].toLowerCase();
       const command = commands.get(commandName) || commands.get(aliases.get(commandName));
- 
+
       if (!command) {
         await message.reply(`Command "${commandName}" not found.`);
       } else {
         const configCommand = command.config;
         const roleText = roleTextToString(configCommand.role);
+        const otherName=(configCommand.aliases);
         const author = configCommand.author || "Unknown";
- 
-        const longDescription = configCommand.longDescription ? configCommand.longDescription.en || "No description" : "No description";
- 
+
+        const longDescription = (configCommand.longDescription) ? (configCommand.longDescription.en) || "No description" : "No description";
+
         const guideBody = configCommand.guide?.en || "No guide available.";
         const usage = guideBody.replace(/{p}/g, prefix).replace(/{n}/g, configCommand.name);
- 
-        const response = `╭── NAME ────☺︎︎
-  │ ${configCommand.name}
-  ├──☺︎︎ INFO
-  │ Description: ${longDescription}
-  │ Other names: ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}
-  │ Other names in your group: Do not have
-  │ Version: ${configCommand.version || "1.0"}
-  │ Role: ${roleText}
-  │ Time per command: ${configCommand.countDown || 1}s
-  │ Author: ${author}
-  ├──☺︎︎ Usage
-  │ ${usage}
-  ├──☺︎︎ Notes
-  │ The content inside <XXXXX> can be changed
-  │ The content inside [a|b|c] is a or b or c
-  ╰────────────☺︎︎`;
- 
+
+        const response = `╭── ✨𝐍𝐀𝐌𝐄✨ ────⭓
+ │ ${configCommand.name}
+ ├── 🐸𝐈𝐧𝐟𝐨🐸
+ │ ✨ 𝙾𝚃𝙷𝙴𝚁 𝙽𝙰𝙼𝙴𝚂: ${otherName}
+ │ 🍀𝙳𝚎𝚜𝚌𝚛𝚒𝚙𝚝𝚒𝚘𝚗: ${longDescription}
+ │ ✨𝙾𝚃𝙷𝙴𝚁 𝙽𝙰𝙼𝙴𝚂 𝙸𝙽 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿: ${configCommand.aliases ? configCommand.aliases.join(", ") : "𝙳𝙾 𝙽𝙾𝚃 𝙷𝙰𝚅𝙴"}
+ │ 🍀𝚅𝚎𝚛𝚜𝚒𝚘𝚗: ${configCommand.version || "1.0"}
+ │ ✨𝚁𝚘𝚕𝚎: ${roleText}
+ │ 🍀𝚃𝚒𝚖𝚎 𝚙𝚎𝚛 𝚌𝚘𝚖𝚖𝚊𝚗𝚍: ${configCommand.countDown || 1}s
+ │ ✨𝙰𝚞𝚝𝚑𝚘𝚛: ${author}
+ ├── ✨𝐔𝐬𝐚𝐠𝐞✨
+ │ ${usage}
+ ├──✨𝐍𝐨𝐭𝐞𝐬✨
+ │ ⚡𝚃𝚑𝚎 𝚌𝚘𝚗𝚝𝚎𝚗𝚝 inside <𝙽𝙸𝚂𝙰𝙽> 𝚌𝚊𝚗 𝚋𝚎 𝚌𝚑𝚊𝚗𝚐𝚎𝚍
+ │ ⚡𝚃𝚑𝚎 𝚌𝚘𝚗𝚝𝚎𝚗𝚝 inside [𝙰|𝙱|𝙲] 𝚒𝚜 𝚊 𝚘𝚛 𝚋 𝚘𝚛 𝚌
+ ╰━━━━━━━❖`;
+
         await message.reply(response);
       }
     }
   },
 };
- 
+
 function roleTextToString(roleText) {
   switch (roleText) {
     case 0:
-      return "0 (All users)";
+      return ("0 (All users)");
     case 1:
-      return "1 (Group administrators)";
+      return ("1 (Group administrators)");
     case 2:
-      return "2 (Admin bot)";
+      return ("2 (Admin bot)");
     default:
-      return "Unknown role";
+      return ("Unknown role");
   }
-}
-const wrapper = new GoatWrapper(module.exports);
+  const wrapper = new GoatWrapper(module.exports);
 wrapper.applyNoPrefix({ allowPrefix: true });
+     }
