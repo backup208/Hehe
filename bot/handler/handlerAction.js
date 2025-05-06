@@ -1,19 +1,3 @@
-Skip to content
-Navigation Menu
-
-Code
-Issues
-Pull requests
-Anik/bot/handler
-/handlerAction.js
-zihad6926
-zihad6926
-4 days ago
-105 lines (89 loc) · 3.03 KB
-
-Code
-
-Blame
 const createFuncMessage = global.utils.message;
 const handlerCheckDB = require("./handlerCheckData.js");
 
@@ -119,4 +103,3 @@ module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, user
 		}
 	};
 };
- 
