@@ -1,7 +1,6 @@
 const axios = require("axios");
 const { getStreamFromURL } = global.utils;
 
-
 const models = {
   "1": "Anime Premium V2",
   "2": "Cartoon Premium",
@@ -28,16 +27,13 @@ const models = {
   "23": "Anime Style: Ghibli V1",
   "24": "Anime Style: Ghibli V2",
   "25": "Anime Style: Webtoon",
-  
-  
-  
 };
 
 module.exports = {
   config: {
     name: "art",
     version: "1.0",
-    author: "SiAM",// Don't change 
+    author: "SiAM",
     countDown: 15,
     role: 0,
     shortDescription: "Turn yourself into an anime character!",
@@ -48,11 +44,21 @@ module.exports = {
     }
   },
 
-  onStart: async function ({ api, args, message, event }) {
+  onStart: async function ({ api, args, message, event, commandName }) {
     try {
       const [modelNumber] = args;
 
-      if (!modelNumber || isNaN(modelNumber) || !models[modelNumber]) {
+      if (!modelNumber) {
+        const list = Object.entries(models)
+          .map(([number, name]) => `❏ ${number} : ${name}`)
+          .join("\n");
+
+        return message.reply(
+          `🖼️ 𝗔𝗿𝘁 𝗠𝗼𝗱𝗲𝗹 𝗟𝗶𝘀𝘁 🎨\n\n${list}\n\nUse command like:\n${commandName} [modelNumber]\nExample: ${commandName} 2`
+        );
+      }
+
+      if (isNaN(modelNumber) || !models[modelNumber]) {
         return message.reply("Invalid model number. Please provide a valid model number from the list.");
       }
 
@@ -63,7 +69,7 @@ module.exports = {
       const imageUrl = event.messageReply.attachments[0].url;
       const encodedImageUrl = encodeURIComponent(imageUrl);
 
-      const processingMessage = message.reply(`Applying the Filter, please wait...\nModel using: ${modelNumber} (${models[modelNumber]}) ⌛`);
+      const processingMessage = await message.reply(`Applying the Filter, please wait...\nModel using: ${modelNumber} (${models[modelNumber]}) ⌛`);
 
       const response = await axios.get(`https://simo-aiart.onrender.com/generate?imageUrl=${encodedImageUrl}&modelNumber=${modelNumber}`);
 
@@ -76,7 +82,7 @@ module.exports = {
       });
 
       message.reaction("✅", event.messageID);
-      message.unsend((await processingMessage).messageID);
+      message.unsend(processingMessage.messageID);
 
     } catch (error) {
       console.error(error);
