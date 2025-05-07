@@ -1,40 +1,86 @@
 const axios = require("axios");
+const { getStreamFromURL } = global.utils;
+
+
+const models = {
+  "1": "Anime Premium V2",
+  "2": "Cartoon Premium",
+  "3": "Anime Style: Maid Outfit",
+  "4": "Anime Style: Beach Babe",
+  "5": "Anime Style: Sweet Fantasy",
+  "6": "Anime Style: Love Story Comic",
+  "7": "Anime Style: High School Memories",
+  "8": "Anime Style: Festive Christmas",
+  "9": "Anime Art: Pirate Adventure ( One Piece )",
+  "10": "Anime Art: Pop Star Sensation ( Oshi no Ko )",
+  "11": "Anime Art: Ninja Legacy ( Naruto )",
+  "12": "Anime Art: Super Warriors ( DBZ )",
+  "13": "Anime Art: Dark Notebook ( Death Note )",
+  "14": "Anime Art: Eternal Battle ( Bleach )",
+  "15": "Anime Art: Wings of Destiny ( AOT )",
+  "16": "Anime Art: Mystic Magic (Jujutsu Kaisen)",
+  "17": "Anime Art: Tennis Prodigy (ThePrince of Tennis)",
+  "18": "Anime Art: Demon Slayer Chronicles (Demon Slayer)",
+  "19": "Anime Art: Alchemical Adventures (Fullmetal Alchemist)",
+  "20": "Anime Art: Heroic Future (My Hero Academia)",
+  "21": "Anime Art: Prehistoric Quest (Dr Stone)",
+  "22": "Anime Art: Court Clash (Haikyuu)",
+  "23": "Anime Style: Ghibli V1",
+  "24": "Anime Style: Ghibli V2",
+  "25": "Anime Style: Webtoon",
+  
+  
+  
+};
 
 module.exports = {
- config: {
- name: "art",
- role: 0,
- author: "OtinXSandip",
- countDown: 5,
- longDescription: "Art images",
- category: "ai",
- guide: {
- en: "${pn} reply to an image with a prompt and choose model 1 - 52"
- }
- },
- onStart: async function ({ message, api, args, event }) {
- const text = args.join(' ');
+  config: {
+    name: "art",
+    version: "1.0",
+    author: "SiAM",// Don't change 
+    countDown: 15,
+    role: 0,
+    shortDescription: "Turn yourself into an anime character!",
+    longDescription: "Apply an anime-style filter to an image to turn it into an anime character.",
+    category: "Image",
+    guide: {
+      en: "{pn} [modelNumber]\nexample: {pn} 2\n\nHere are the available models:\n" + Object.entries(models).map(([number, name]) => `❏ ${number} : ${name}`).join("\n")
+    }
+  },
 
- if (!event.messageReply || !event.messageReply.attachments || !event.messageReply.attachments[0]) {
- return message.reply("Image URL is missing.");
- }
+  onStart: async function ({ api, args, message, event }) {
+    try {
+      const [modelNumber] = args;
 
- const imgurl = encodeURIComponent(event.messageReply.attachments[0].url);
+      if (!modelNumber || isNaN(modelNumber) || !models[modelNumber]) {
+        return message.reply("Invalid model number. Please provide a valid model number from the list.");
+      }
 
- const [prompt, model] = text.split('|').map((text) => text.trim());
- const puti = model || "37";
+      if (!(event.type === "message_reply" && event.messageReply.attachments && event.messageReply.attachments.length > 0 && ["photo", "sticker"].includes(event.messageReply.attachments[0].type))) {
+        return message.reply("Please reply to an image to apply the anime filter.⚠");
+      }
 
- api.setMessageReaction("⏰", event.messageID, () => {}, true);
- const lado = `https://sandipapi.onrender.com/art?imgurl=${imgurl}&prompt=${encodeURIComponent(prompt)}&model=${puti}`;
+      const imageUrl = event.messageReply.attachments[0].url;
+      const encodedImageUrl = encodeURIComponent(imageUrl);
 
- message.reply("✅| Generating please wait.", async (err, info) => {
- const attachment = await global.utils.getStreamFromURL(lado);
- message.reply({
- attachment: attachment
- });
- let ui = info.messageID; 
- message.unsend(ui);
- api.setMessageReaction("✅", event.messageID, () => {}, true);
- });
- }
+      const processingMessage = message.reply(`Applying the Filter, please wait...\nModel using: ${modelNumber} (${models[modelNumber]}) ⌛`);
+
+      const response = await axios.get(`https://simo-aiart.onrender.com/generate?imageUrl=${encodedImageUrl}&modelNumber=${modelNumber}`);
+
+      const { imageUrl: generatedImageUrl } = response.data;
+      const Stream = await getStreamFromURL(generatedImageUrl);
+
+      await message.reply({
+        body: `Anime Art applied ✨\nModel used: ${modelNumber} (${models[modelNumber]})`,
+        attachment: Stream,
+      });
+
+      message.reaction("✅", event.messageID);
+      message.unsend((await processingMessage).messageID);
+
+    } catch (error) {
+      console.error(error);
+      message.reply("Failed to apply the Anime filter.⚠");
+    }
+  }
 };
