@@ -39,7 +39,7 @@
     "100078769420993"
   ],
   "whiteListMode": {
-    "enable": true,
+    "enable": false,
     "whiteListIds": [
       "100067540204855",
       "100078769420993"
@@ -171,7 +171,7 @@
     "notes": "Document here: https://github.com/ntkhang03/fb-chat-api/blob/master/DOCS.md#apisetoptionsoptions "
   },
   "whiteListModeThread": {
-    "enable": true,
+    "enable": false,
     "whiteListThreadIds": [
       "24063981609872002"
     ],
