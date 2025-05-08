@@ -4,10 +4,10 @@ const cmdUrlsJson = "https://raw.githubusercontent.com/ARYAN-AROHI-STORE/A4YA9-A
 const ITEMS_PER_PAGE = 10;
 
 module.exports.config = {
-  name: "cmdstore",
-  aliases: ["cs", "cmds"],
+  name: "cmdstore3",
+  aliases: ["cs3", "cmds3"],
   author: "ARYAN 🐔",
-  role: 0,
+  role: 2,
   version: "0.1",
   description: {
     en: "Commands Store of ArYan",
@@ -54,9 +54,9 @@ module.exports.onStart = async function ({ api, event, args }) {
     const startIndex = (page - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const cmdsToShow = finalArray.slice(startIndex, endIndex);
-    let msg = `╭───۞ 𝗖𝗠𝗗 𝗦𝗧𝗢𝗥𝗘\n│\n├🌼 page ${page} of ${totalPages} page(s)\n├🤡 Total ${finalArray.length} commands\n`;
+    let msg = `╭───۞ 𝗖𝗠𝗗 𝗦𝗧𝗢𝗥𝗘\n│\n├ page ${page} of ${totalPages} page(s)\n├ Total ${finalArray.length} commands\n`;
     cmdsToShow.forEach((cmd, index) => {
-      msg += `├──۞ ${startIndex + index + 1}. ${cmd.cmd}\n├👑 AUTHOR: ${cmd.author}\n├🌐 DATE: ${cmd.update || null}\n`;
+      msg += `├──۞ ${startIndex + index + 1}. ${cmd.cmd}\n├ AUTHOR: ${cmd.author}\n├ DATE: ${cmd.update || null}\n`;
     });
     msg += `╰─────────────۞`;
 
@@ -117,7 +117,7 @@ const  { status }  = Reply.cmdName[reply - 1]
       );
     }
     api.unsendMessage(Reply.messageID);
-    const msg = `╭────────۞\n├😘 STATUS :${status || null}\n├♾️ Command Url: ${selectedCmdUrl}\n╰─────────────۞`;
+    const msg = `╭────────۞\n├ STATUS :${status || null}\n├♾ Command Url: ${selectedCmdUrl}\n╰─────────────۞`;
     api.sendMessage(msg, event.threadID, event.messageID);
   } catch (error) {
     api.sendMessage(
