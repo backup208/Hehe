@@ -26,7 +26,7 @@ role: 2,
         api.sendMessage(`❎ | Failed to delete ${fileName}.`, event.threadID);
         return;
       }
-      api.sendMessage(`✅ 𝚂𝙰𝙶𝙾𝚁 𝚈𝙾𝚄𝚁 𝚃𝙷𝙴 𝙲𝙼𝙳 𝙷𝙰𝚂 𝙱𝙴𝙴𝙽 𝙳𝙴𝙻𝙴𝚃𝙴𝚂 ➪ ( ${fileName} ) 𝚂𝚄𝙲𝙲𝙴𝚂𝚂𝙵𝚄𝙻𝙻𝚈!`, event.threadID);
+      api.sendMessage(`✅ 𝚃𝙷𝙴 𝙲𝙼𝙳 𝙷𝙰𝚂 𝙱𝙴𝙴𝙽 𝙳𝙴𝙻𝙴𝚃𝙴𝚂 ➪ ( ${fileName} ) 𝚂𝚄𝙲𝙲𝙴𝚂𝚂𝙵𝚄𝙻𝙻𝚈!`, event.threadID);
     });
   }
 };
