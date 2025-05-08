@@ -1,41 +1,44 @@
-const axios = require('axios');
-const config = {
-  name: 'flux2',
-  category: 'tool',
-  aliases: "flux2",
-  author: 'Romim|nyx',
-  role: 2,
+const axios = require("axios");
+
+const baseApiUrl = async () => {
+  const base = await axios.get("https://raw.githubusercontent.com/mahmudx7/exe/main/baseApiUrl.json");
+  return base.data.mahmud;
 };
-const fetchImg =  async (prompt, senderID) => {
-  const apiUrl = `https://ljrm5l-3000.csb.app/api/flux?prompt=${encodeURIComponent(prompt)}&uid=61566554077088`;
-  const response = await axios.get(apiUrl);
-  return response.data;
-};
-const onStart = async ({ args, event, message }) => {
-  const query = args.join(' ');
 
-  if (!query) {
-    message.reply('Please provide a prompt🐤');
-  }
-
-  try {
-    const time1 = Date.now();
-    const msg = await message.reply('Please wait...');
-
-    const imageUrl = await fetchImg(query, event.senderID);
-
-    const timeTaken = ((Date.now() - time1 ) / 1000).toFixed(2);
-
-    await message.unsend(msg.messageID);
-    message.reply({
-      body: `Here's your image\nTaken: ${timeTaken} seconds`,
-      attachment: await global.utils.getStreamFromURL(imageUrl),
-    });
-  } catch (error) {
-    message.reply(`Error: ${error.message}`);
-  }
-};
 module.exports = {
-  config,
-  onStart
-                          }
+  config: {
+    name: "fluxpro",
+    version: "1.7",
+    author: "MahMUD",
+    countDown: 10,
+    role: 0,
+    category: "Image gen",
+    guide: "{pn} [prompt]"
+  },
+
+  onStart: async function ({ api, event, args }) {
+    const prompt = args.join(" ");
+    if (!prompt) return api.sendMessage("Please provide a prompt to generate an image.", event.threadID, event.messageID);
+
+    try {
+      const apiUrl = await baseApiUrl();
+      if (!apiUrl) return api.sendMessage("Base API URL could not be loaded.", event.threadID, event.messageID);
+
+      const res = await axios.post(`${apiUrl}/api/fluxpro`, { prompt });
+
+      if (!res.data?.imageUrl) return api.sendMessage("Failed to generate image.", event.threadID, event.messageID);
+
+      const imageStream = await global.utils.getStreamFromURL(res.data.imageUrl);
+
+      const message = await api.sendMessage({
+        body: "✅ Here is your generated image",
+        attachment: imageStream
+      }, event.threadID, event.messageID);
+
+      api.setMessageReaction("😽", message.messageID, () => {}, true);
+
+    } catch (err) {
+      return api.sendMessage("An error occurred while generating the image.", event.threadID, event.messageID);
+    }
+  }
+};
