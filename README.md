@@ -1,5 +1,5 @@
 <img src="" alt="banner">
-<h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> 𝗦𝗔𝗚𝗢𝗥 -𝗕𝗢𝗧 - 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐒𝐀𝐆𝐎𝐑  𝗠𝗘𝗦𝗦𝗘𝗡𝗚𝗘𝗥 𝗖𝗛𝗔𝗧 𝗕𝗢𝗧</h1>
+<h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> 𝗠𝗜𝗠-𝗕𝗢𝗧 - 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐙𝐈𝐇𝐀𝐃  𝗠𝗘𝗦𝗦𝗘𝗡𝗚𝗘𝗥 𝗖𝗛𝗔𝗧 𝗕𝗢𝗧</h1>
 <!-- Github README -->
 
 <p align="center"><img src="https://img.shields.io/badge/I Am %20BANGLADESHI- NOOB PROGRAMMER-green?colorA=%23ff0000&colorB=%23017e40&style=flat-square">
@@ -18,12 +18,12 @@
 
 
 <h3><b><i>🏆 Github Statistics :</i></b></h3>
-<a href="https://github.com/sagorislam00"><img width=550 src="https://github-profile-trophy.vercel.app/?username=𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐒𝐀𝐆𝐎𝐑&theme=dracula&no-frame=true&title=Followers,Stars,Commit,Repository,Issues"/></a>
+<a href="https://github.com/zihad6926"><img width=550 src="https://github-profile-trophy.vercel.app/?username=𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐙𝐈𝐇𝐀𝐃&theme=dracula&no-frame=true&title=Followers,Stars,Commit,Repository,Issues"/></a>
 
 </p>
 <p align="center"> 
  𝚅𝙸𝚂𝙸𝚃𝙾𝚁𝚂 𝙲𝙾𝚄𝙽𝚃
- <img src="https://profile-counter.glitch.me/sagorislam00 /count.svg" alt="Visitors">
+ <img src="https://profile-counter.glitch.me/sagorislam00" alt="Visitors">
 </p>
 
 <img align="center" alt="line" src="https://github.com/DalpatRathore/dalpatrathore/blob/main/assets/images/line-1.svg">
@@ -32,7 +32,7 @@
 
 <img align="center" alt="line" src="https://github.com/DalpatRathore/dalpatrathore/blob/main/assets/images/line-2.svg">
 
-- ➪ 𝗡𝗔𝗠𝗘      :𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐒𝐀𝐆𝐎𝐑
+- ➪ 𝗡𝗔𝗠𝗘      : 𝐙𝐈𝐇𝐀𝐃 𝐀𝐇𝐌𝐌𝐄𝐃
 
 <img align="center" alt="line" src="https://github.com/DalpatRathore/dalpatrathore/blob/main/assets/images/line-2.svg">
 
@@ -48,11 +48,11 @@
 
 <img align="center" alt="line" src="https://github.com/DalpatRathore/dalpatrathore/blob/main/assets/images/line-2.svg">
 
-- ➪ 𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 :- [𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐒𝐀𝐆𝐎𝐑](https://www.facebook.com/Xsagorxnxx)
+- ➪ 𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 :- [𝐙𝐈𝐇𝐀𝐃 𝐀𝐇𝐌𝐄𝐃](https://www.facebook.com/xxn.zihad)
 
 <img align="center" alt="line" src="https://github.com/DalpatRathore/dalpatrathore/blob/main/assets/images/line-2.svg">
 
-- ➪ 𝗜𝗡𝗦𝗧𝗔𝗚𝗥𝗔𝗠 :- [𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐒𝐀𝐆𝐎𝐑 ](https://www.instagram.com/11sagor_islam)
+- ➪ 𝗜𝗡𝗦𝗧𝗔𝗚𝗥𝗔𝗠 :- [𝐙𝐈𝐇𝐀𝐃 𝐀𝐇𝐄𝐀𝐃](https://www.instagram.com/xxn.xihad)
 
 <img align="center" alt="line" src="https://github.com/DalpatRathore/dalpatrathore/blob/main/assets/images/line-2.svg">
 
