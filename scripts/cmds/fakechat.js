@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     name: "fakechat",
-    aliases: ["fchat","fakec"],
+    aliases: ["fchat","fakec","fc"],
     version: "1.0",
     role: 0,
     premium: true,
