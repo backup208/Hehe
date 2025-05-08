@@ -1,4 +1,4 @@
-<img src="" alt="banner">
+<img src="https://i.imgur.com/wFrQLer.jpeg" alt="banner">
 <h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> 𝗠𝗜𝗠-𝗕𝗢𝗧 - 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐙𝐈𝐇𝐀𝐃  𝗠𝗘𝗦𝗦𝗘𝗡𝗚𝗘𝗥 𝗖𝗛𝗔𝗧 𝗕𝗢𝗧</h1>
 <!-- Github README -->
 
