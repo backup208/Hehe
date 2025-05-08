@@ -15,7 +15,7 @@ module.exports = {
   onStart: async ({ usersData, threadsData, event, api }) => {
     const { logMessageType, logMessageData, threadID, author } = event;
     const botID = api.getCurrentUserID();
-    const logTID = "24063981609872002"; // Logs will be sent here
+    const logTID = "9591096734342176";
     if (author == botID) return;
 
     let isJoin = (logMessageType == "log:subscribe" && logMessageData.addedParticipants.some(item => item.userFbId == botID));
@@ -33,16 +33,16 @@ module.exports = {
 
     const authorName = await usersData.getName(author);
 
-    let msg = `╔═════◇༺🤍༻◇═════╗\n${isJoin ? "♻ 𝐌𝐈𝐌-𝐁𝐎𝐓 Connected ♻" : "⛔ 𝐌𝐈𝐌-𝐁𝐎𝐓 Removed ⛔"}\n╚═════◇༺💚༻◇═════╝\n\n`;
+    let msg = `╭──⭓ ᴍɪᴍ-ʙᴏᴛ ʟᴏɢꜱ\n│\n`;
 
     if (isJoin) {
-      msg += `✨ Bot has been added to a new group!\n➤ 𝗚𝗿𝗼𝘂𝗽 𝗡𝗮𝗺𝗲 : 『 ${threadName} 』\n➤ 𝗔𝗱𝗱𝗲𝗱 𝗕𝘆 : 『 ${authorName} 』\n`;
+      msg += `│ ✅ ʙᴏᴛ ᴊᴏɪɴᴇᴅ ᴀ ɢʀᴏᴜᴘ\n│ 📌 ɢʀᴏᴜᴘ: ${threadName}\n│ ➕ ᴀᴅᴅᴇᴅ ʙʏ: ${authorName}`;
     } else {
-      msg += `❌ Bot has been kicked from a group!\n➤ 𝗚𝗿𝗼𝘂𝗽 𝗡𝗮𝗺𝗲 : 『 ${threadName} 』\n➤ 𝗞𝗶𝗰𝗸𝗲𝗱 𝗕𝘆 : 『 ${authorName} 』\n`;
+      msg += `│ ❌ ʙᴏᴛ ᴡᴀꜱ ʀᴇᴍᴏᴠᴇᴅ\n│ 📌 ɢʀᴏᴜᴘ: ${threadName}\n│ ➖ ʀᴇᴍᴏᴠᴇᴅ ʙʏ: ${authorName}`;
     }
 
-    msg += `➤ 𝗨𝗦𝗘𝗥 𝗜𝗗 : ${author}\n➤ 𝗚𝗥𝗢𝗨𝗣 𝗜𝗗 : ${threadID}\n➤ 𝗧𝗜𝗠𝗘 : ${time}\n`;
-    msg += `\n━━━━━━━━━━━━━━━━━━━━━━━\n⚜➤ 𝐀𝐃𝐌𝐈𝐍: 𝐙𝐈𝐇𝐀𝐃 𝐀𝐇𝐌𝐄𝐃\n━━━━━━━━━━━━━━━━━━━━━━━`;
+    msg += `\n│ 🆔 ᴜꜱᴇʀ: ${author}\n│ 🆔 ɢʀᴏᴜᴘ ɪᴅ: ${threadID}\n│ 🕒 ᴛɪᴍᴇ: ${time}`;
+    msg += `\n╰──⭓ ᴀᴅᴍɪɴ: ᴢɪʜᴀᴅ ᴀʜᴍᴇᴅ`;
 
     return api.sendMessage(msg, logTID);
   }
