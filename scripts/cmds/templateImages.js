@@ -34,7 +34,7 @@ const templateImages = {
 module.exports = {
   config: {
     name: "template",
-    aliases: ["tmpl"],
+    aliases: ["tpic"],
     version: "1.0",
     author: "Vex_kshitiz",
     shortDescription: "Overlay  images on templates",
