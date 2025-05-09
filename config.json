@@ -36,13 +36,15 @@
   },
   "adminBot": [
     "100067540204855",
+    "61573490635689",
     "100078769420993",
     "61558166309783"
   ],
   "whiteListMode": {
-    "enable": false,
+    "enable": true,
     "whiteListIds": [
       "100067540204855",
+      "61573490635689",
       "100078769420993",
       "61558166309783"
     ],
@@ -173,7 +175,7 @@
     "notes": "Document here: https://github.com/ntkhang03/fb-chat-api/blob/master/DOCS.md#apisetoptionsoptions "
   },
   "whiteListModeThread": {
-    "enable": false,
+    "enable": true,
     "whiteListThreadIds": [
       "24063981609872002"
     ],
