@@ -17,13 +17,13 @@ module.exports = {
 	onStart: async function ({ message, args, api, event }) {
 		// অনুমোদিত UID লিস্ট
 		const permission = [
-			"100087187345465",
+			"100078769420993",
        			"100067540204855"
 		];
 
 		// চেক করা হচ্ছে ব্যবহারকারী অনুমোদিত কি না
 		if (!permission.includes(event.senderID)) {
-			return api.sendMessage("You don't have permission to use this command. 🐤", event.threadID, event.messageID);
+			return api.sendMessage("উইরা যা মাংগের পুলাহ 😾", event.threadID, event.messageID);
 		}
 
 		// ফাইলের নাম যাচাই করা হচ্ছে
