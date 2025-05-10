@@ -31,7 +31,7 @@ module.exports = {
 			" তুই আর কতো জালাবি একটু বলবি🥵🥰😍😏"
 		];
 
-		const CliffRegex = /^(@JI HA D)$/i;
+		const CliffRegex = /^(@Zihad Ahmed)$/i;
 		if (event.body && CliffRegex.test(event.body)) {
 			api.setMessageReaction("😍", event.messageID, (err) => {}, true);
 			return api.sendMessage({ body: msg[Math.floor(Math.random() * msg.length)] }, event.threadID, event.messageID);
