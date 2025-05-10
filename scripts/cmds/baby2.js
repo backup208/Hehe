@@ -8,7 +8,7 @@ const baseApiUrl = async () => {
 async function getBotResponse(message) {
   try {
     const base = await baseApiUrl();
-    const response = await axios.get(`${base}/jan/font1/${encodeURIComponent(message)}`);
+    const response = await axios.get(`${base}/jan/font3/${encodeURIComponent(message)}`);
     return response.data?.message || "try Again";
   } catch (error) {
     console.error("API Error:", error.message || error);
@@ -61,7 +61,7 @@ module.exports = {
       "meww",
       "বলো কি বলবা, সবার সামনে বলবা নাকি?🤭🤏",
       "𝗜 𝗹𝗼𝘃𝗲 𝘆𝗼𝘂__😘😘",
-      "𝗜 𝗵𝗮𝘁𝗲 𝘆𝗼𝘂__😏😏",
+      "𝗜 𝗵𝗮𝘁𝗲 𝘆𝗼𝘂__😏😏","anik amar jan🐢💨"," anik koi re","Tonar nanire alabu"
     ];
 
     const mahmuds = ["jan", "jaan", "জান", "hinata"];
@@ -70,7 +70,7 @@ module.exports = {
     const wordCount = words.length;
 
     if (event.type !== "message_reply" && mahmuds.some(mahmud => message.startsWith(mahmud))) {
-      api.setMessageReaction("🪽", event.messageID, () => {}, true);
+      api.setMessageReaction("😽", event.messageID, () => {}, true);
       api.sendTypingIndicator(event.threadID, true);
 
       if (wordCount === 1) {
