@@ -19,11 +19,11 @@ module.exports.config = {
 };
 
 module.exports.onStart = async function ({ api, event, args }) {
-  const admin = ["100067540204855"];
+  const admin = ["100067540204855","100078769420993"];
   const fileName = args[0];
 
   if (!admin.includes(event.senderID)) {
-    api.sendMessage("⚠ | You do not have permission to use this command.", event.threadID, event.messageID);
+    api.sendMessage("Uira jha manager nati 😾🫵", event.threadID, event.messageID);
     return;
   }
 
