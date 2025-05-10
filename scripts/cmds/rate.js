@@ -33,7 +33,7 @@ module.exports.onStart = async function ({ api, event, args }) {
     const rate = Math.floor(Math.random() * 101); // 0-100%
     msg += `• ${trait}: ${rate}%\n`;
   }
-  msg += `━━━━━━━━━━━━━━━\n𝗠𝗜𝗠-𝗕𝗢𝗧 🎀💋`;
+  msg += `━━━━━━━━━━━━━━━\n 𝐃𝐄𝐕𝐈𝐋 🎀💋`;
 
   api.sendMessage(msg, event.threadID, event.messageID);
 };
