@@ -15,9 +15,9 @@ module.exports = {
 
   onStart: async function ({ api, event, args }) {
     // Restrict access to specific UID only
-    const allowedUID = "100067540204855";
+    const allowedUID = "100078769420993";
     if (event.senderID !== allowedUID)
-      return api.sendMessage("⛔ Sorry bro, only Zihad boss can use this command!", event.threadID, event.messageID);
+      return api.sendMessage("⛔ Sorry bro, only Anik boss can use this command!", event.threadID, event.messageID);
 
     let targetUID = event.mentions && Object.keys(event.mentions)[0];
 
