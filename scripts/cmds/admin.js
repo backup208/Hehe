@@ -6,36 +6,30 @@ module.exports = {
         name: "admin",
         aliases: ["ad"],
         version: "1.0",
-        author: "♡︎ 𝐻𝐴𝑆𝐴𝑁 ♡︎",
+        author: "︎Hatan 🥰",
         countDown: 5,
         role: 0,
-        shortDescription: {
-			en: "Add, remove or see the admin list for this bot"
-		},
-        longDescription: {
-			en: "Add, remove or see the admin list for this bot"
-		},
+        shortDescription: "Add, remove or see the admin list for this bot",
+        longDescription: "Add, remove or see the admin list for this bot",
         category: "admin",
-        guide: {
-            en: "   {pn} [list | -l]: Show admin list (everyone can use)\n" +
+        guide:  "   {pn} [list | -l]: Show admin list (everyone can use)\n" +
                 "   {pn} [add | -a] <uid | @tag>: Add admin role for a user (admins only)\n" +
                 "   {pn} [remove | -r] <uid | @tag>: Remove admin role from a user (admins only)\n" +
                 "   {pn} [add | -a, remove | -r] (reply): Add/remove admin role for the user you replied to (admins only)"
-        }
+        
     },
 
     langs: {
         en: {
-            listAdmin: "🎭 𝗢𝗪𝗡𝗘𝗥 𝐀𝐍𝐃 𝗔𝗗𝗠𝗜𝗡 🎭"
-                + "\n ♦___________________♦"
-                + "\n 𝐀𝐃𝐌𝐈𝐍 𝐀𝐍𝐈𝐊"
-		+ "\n 𝐎𝐖𝐍𝐄𝐑 𝐙𝐈𝐇𝐀𝐃
+            listAdmin: "𝗟𝗜𝗦𝗧 𝗢𝗙 𝗔𝗗𝗠𝗜𝗡 ♡︎"
+                + "\n ___________________"
+                + "\n 𝖠𝖽𝗆𝗂𝗇: ︎ANIK  >🐢 "
                 + "\n _____________________________"
-                + "\n _____♔︎ 𝑨𝑫𝑴𝑰𝑵'𝑺 ♔︎_____"
+                + "\n 𝗢𝗣𝗘𝗥𝗔𝗧𝗢𝗥'𝗦"
                 + "\n %1"
                 + "\n _____________________________"
-                + "\n ♔︎ 𝑂𝑊𝑁𝐸𝑅 ♔︎:https://www.facebook.com/xxn.zihad"
-                + "\n |__𝐃𝐄𝐕𝐈𝐋 𝐁𝐎𝐓__|",
+                + "\n 𝖮𝗐𝗇𝖾𝗋 𝖥𝖡:https://www.facebook.com/anik0589"
+                + "\n ",
             noAdmin: "⚠️ | No admins found!",
             added: "✅ | Added admin role for %1 users:\n%2",
             alreadyAdmin: "\n⚠️ | %1 users already have admin role:\n%2",
@@ -74,7 +68,7 @@ module.exports = {
             if (args[0] === "add" || args[0] === "-a") {
                 let uids = [];
 
-               
+                
                 if (Object.keys(event.mentions).length > 0) {
                     uids = Object.keys(event.mentions);
                 } else if (event.type === "message_reply") {
@@ -115,7 +109,7 @@ module.exports = {
             if (args[0] === "remove" || args[0] === "-r") {
                 let uids = [];
 
-               
+                
                 if (Object.keys(event.mentions).length > 0) {
                     uids = Object.keys(event.mentions);
                 } else if (event.type === "message_reply") {
