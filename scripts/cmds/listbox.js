@@ -18,7 +18,7 @@ module.exports = {
       const threads = await api.getThreadList(100, null, ["INBOX"]);
       const groupCount = threads.filter(t => t.isGroup && t.name !== null).length;
 
-      api.sendMessage(`🤖 MIM Bot is currently in ${groupCount} group(s).`, event.threadID);
+      api.sendMessage(`🤖 ANIK BoT is currently in ${groupCount} group(s).`, event.threadID);
     } catch (err) {
       console.error(err);
       api.sendMessage("Couldn't fetch group count.", event.threadID);
