@@ -55,7 +55,7 @@ module.exports = {
 
       const msg = args.join(" ").trim();
       if (!msg) {
-        return api.sendMessage("𝘏𝘦𝘭𝘭𝘰 𝘐𝘮 𝘚𝘈𝘋𝘜 𝘉𝘰𝘵.\n\n𝘏𝘰𝘸 𝘊𝘢𝘯 𝘐 𝘈𝘴𝘴𝘪𝘴𝘵 𝘠𝘰𝘶..? ", event.threadID, event.messageID);
+        return api.sendMessage("𝘏𝘦𝘭𝘭𝘰 𝘐𝘮 ANIK 𝘉𝘰𝘵.\n\n𝘏𝘰𝘸 𝘊𝘢𝘯 𝘐 𝘈𝘴𝘴𝘪𝘴𝘵 𝘠𝘰𝘶..? ", event.threadID, event.messageID);
       }
 
       if (args[0].toLowerCase() === "teach") {
