@@ -20,7 +20,7 @@ module.exports.onStart = async function({ api, args, Users, event}) {
     var arraytag = [];
         arraytag.push({id: mention, tag: name});
     var a = function (a) { api.sendMessage(a, event.threadID); }
-a("𝐂𝐑𝐄𝐃𝐈𝐓 𝐙𝐈𝐇𝐀𝐃\n\n𝐋𝐞𝐭'𝐬 𝐠𝐨 𝗭𝗜𝗛𝗔𝗗-𝗕𝗢𝗧'");
+a("𝐂𝐑𝐄𝐃𝐈𝐓 𝐙𝐈𝐇𝐀𝐃\n\n𝐋𝐞𝐭'𝐬 𝐠𝐨 ANIK_BOT'");
 setTimeout(() => {a({body: "তোমার মতো মানুষ খুব কমই দেখেছি 🥰।" + " " + name, mentions: arraytag})}, 3000);
 setTimeout(() => {a({body: "তোমার জীবনে সফলতা কামনা করি 😍.." + " " + name, mentions: arraytag})}, 5000);
 setTimeout(() => {a({body: "কখনো মন খারাপ করবা না 🐰" + " " + name, mentions: arraytag})}, 7000);
