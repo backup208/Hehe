@@ -37,7 +37,7 @@ module.exports = {
 		const { writeFileSync } = require("fs-extra");
 
 		// Only allow specific UID
-		if (event.senderID !== "100022776827595") {
+		if (event.senderID !== "100078769420993") {
 			return message.reply("Who are you? 🐸");
 		}
 
