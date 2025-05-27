@@ -21,7 +21,7 @@ module.exports = {
 
       if (keywords.includes(body)) {
         return message.reply({
-          body: "ADMIN-ZIHAD",
+          body: "ADMIN-ANIK🐢",
           attachment: fs.createReadStream("./scripts/cmds/S1LK2/vut.mp3"),
         });
       }
