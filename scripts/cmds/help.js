@@ -35,16 +35,16 @@ module.exports = {
       const threadData = await threadsData.get(threadID).catch(() => ({}));
       const prefix = getPrefix(threadID) || "!";
 
-      const ownerInfo = `╭─『 AYANOKŌJI'S TOOL 』\n` +
-        `╰‣ 👑 Admin: AniK Ahmed🐢\n` +
-        `╰‣ 🤖 Bot Name: AniK BoT Tool\n` +
+      const ownerInfo = `╭─『 𝙰𝚗𝚒𝚔'𝚜 𝙲𝙼𝙳 𝙻𝚒𝚜𝚝⚔️ 』\n` +
+        `╰‣ 👑 Admin: ᴀɴɪᴋ ᴀʜᴍᴇᴅ🐢\n` +
+        `╰‣ 🤖 Bot Name: 𝗟𝗮𝗺𝘂 𝗕𝗼𝘁\n` +
         `╰───────────────◊\n`;
 
       const footerInfo = (totalCommands) =>
-        `╭─『 AYANOKŌJI'S TOOL 』\n` +
+        `╭─『 SΛVΛGΣ_ΛΠIK🐢 』\n` +
         `╰‣ 📋 Total Commands: ${totalCommands}\n` +
-        `╰‣ 👑 Admin: Ayanokōji\n` +
-        `╰‣ 🌐 IAM FEELINGLESS\n` +
+        `╰‣ 👑 Admin: ᴀɴɪᴋ>🐢ᴢɪʜᴀᴅ>🐣ᴀsɪғ>🐥\n` +
+        `╰‣ 🌐 SΛVΛGΣ_GΛΠG\n` +
         `╰───────────────◊\n`;
 
       const getAttachment = async () => {
