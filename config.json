@@ -168,7 +168,7 @@
     "updatePresence": true,
     "listenTyping": true,
     "logLevel": "error",
-    "selfListen": true,
+    "selfListen": false,
     "selfListenEvent": false,
     "autoMarkDelivery": false,
     "autoReconnect": false,
