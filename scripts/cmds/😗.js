@@ -14,7 +14,7 @@ module.exports = {
  onChat: async function({ event, message, getLang }) {
  if (event.body && event.body.toLowerCase() === "😗") {
  return message.reply({
- body: "     「ADMIN-ZIHAD」",
+ body: "     「ADMIN-NILA🐊」",
  attachment: await global.utils.getStreamFromURL("https://drive.google.com/uc?id=17knV-m3yAjYayZF4Zh3kXm_Tqw6wOO6_")
  });
  }
