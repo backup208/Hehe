@@ -17,7 +17,7 @@ module.exports = {
   },
 
   onStart: async function ({ message, event, api }) {
-    const imgURL = "https://graph.facebook.com/100078769420993/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
+    const imgURL = "https://graph.facebook.com/61562720218497/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
     
     try {
       const stream = await getStreamFromURL(imgURL);
