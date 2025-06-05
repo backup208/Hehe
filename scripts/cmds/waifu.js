@@ -26,7 +26,7 @@ module.exports = {
 				let img = res2.url
 
 				const form = {
-					body: `𝙽𝚒𝚂𝚊𝙽`
+					body: `ᴀɴɪᴋ🐢`
 
 				};
 				if (img)
@@ -47,7 +47,7 @@ module.exports = {
 				let img1 = res2.url
 
 				const form = {
-					body: `   「 ᴀɴɪᴋ🐢,ᴍɪᴋᴀsᴀ, ʀᴀɴᴅᴏᴍ ᴡᴀɪғᴜ 」   `
+					body: `   「ᴀɴɪᴋ🐢,ᴍɪᴋᴀsᴀ, ʀᴀɴᴅᴏᴍ ᴡᴀɪғᴜ」   `
 
 				};
 				if (img1)
