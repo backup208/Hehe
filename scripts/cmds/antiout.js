@@ -5,43 +5,45 @@ module.exports = {
     author: "AceGun",
     countDown: 5,
     role: 0,
-    shortDescription: "Enable or disable antiout",
-    longDescription: "",
+    shortDescription: "Prevent members from leaving the group",
+    longDescription: "Automatically adds back users who leave the group (requires bot to be admin).",
     category: "boxchat",
-    guide: "{pn} {{[on | off]}}",
+    guide: "{pn} [on | off]",
     envConfig: {
       deltaNext: 5
     }
   },
+
   onStart: async function({ message, event, threadsData, args }) {
-    let antiout = await threadsData.get(event.threadID, "settings.antiout");
-    if (antiout === undefined) {
-      await threadsData.set(event.threadID, true, "settings.antiout");
-      antiout = true;
-    }
+    const currentStatus = await threadsData.get(event.threadID, "settings.antiout");
     if (!["on", "off"].includes(args[0])) {
-      return message.reply("Please use 'on' or 'off' as an argument");
+      return message.reply("❌ Please use:\n- `antiout on` to enable\n- `antiout off` to disable");
     }
-    await threadsData.set(event.threadID, args[0] === "on", "settings.antiout");
-    return message.reply(`Antiout has been ${args[0] === "on" ? "enabled" : "disabled"}.`);
+
+    const newStatus = args[0] === "on";
+    await threadsData.set(event.threadID, newStatus, "settings.antiout");
+    return message.reply(`✅ Antiout has been ${newStatus ? "enabled" : "disabled"} successfully.`);
   },
+
   onEvent: async function({ api, event, threadsData }) {
     const antiout = await threadsData.get(event.threadID, "settings.antiout");
-    if (antiout && event.logMessageData && event.logMessageData.leftParticipantFbId) {
-      // A user has left the chat, get their user ID
+
+    if (
+      antiout &&
+      event.logMessageType === "log:unsubscribe" &&
+      event.logMessageData?.leftParticipantFbId &&
+      event.logMessageData.leftParticipantFbId !== api.getCurrentUserID()
+    ) {
       const userId = event.logMessageData.leftParticipantFbId;
 
-      // Check if the user is still in the chat
-      const threadInfo = await api.getThreadInfo(event.threadID);
-      const userIndex = threadInfo.participantIDs.indexOf(userId);
-      if (userIndex === -1) {
-        // The user is not in the chat, add them back
-        const addUser = await api.addUserToGroup(userId, event.threadID);
-        if (addUser) {
-          console.log(`My Lord,  ${userId} was added back to the chat 💗`);
-        } else {
-          console.log(`Failed to add user ${userId} back to the chat.`);
-        }
+      try {
+        await api.addUserToGroup(userId, event.threadID);
+        await api.sendMessage(
+          `😼 You tried to escape? Added you back to the group!`,
+          event.threadID
+        );
+      } catch (err) {
+        console.log(`❌ Failed to add user (${userId}) back to the group. Make sure the bot is an admin.`);
       }
     }
   }
